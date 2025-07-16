@@ -61,6 +61,9 @@ def getprop(prop):
     value = os.popen(f"getprop {prop}").read().strip()
     return value if value else 'N/A'
 
+def command_exists(cmd):
+    return os.system(f'command -v {cmd} > /dev/null 2>&1') == 0
+
 def get_android_info():
     section_header("Android Device Info")
     print(f"Brand: {getprop('ro.product.brand')}")
@@ -90,9 +93,12 @@ def get_android_connectivity():
     section_header("Connectivity & Services")
 
     # WiFi status and SSID
+    if command_exists('dumpsys'):
+        ssid = os.popen("dumpsys wifi | grep 'SSID' | head -1").read().strip()
+    else:
+        ssid = 'dumpsys not available'
     wifi_state = getprop('wifi.interface')
     wifi_enabled = getprop('wifi.status')
-    ssid = os.popen("dumpsys wifi | grep 'SSID' | head -1").read().strip()
     print(f"WiFi Interface: {wifi_state}")
     print(f"WiFi Status: {wifi_enabled if wifi_enabled != 'N/A' else 'Unknown'}")
     print(f"WiFi SSID: {ssid if ssid else 'N/A'}")
@@ -103,26 +109,38 @@ def get_android_connectivity():
 
     # Bluetooth
     bt_state = getprop('bluetooth.status')
-    if bt_state == 'N/A':
+    if bt_state == 'N/A' and command_exists('settings'):
         bt_state = os.popen("settings get global bluetooth_on").read().strip()
     print(f"Bluetooth: {'On' if bt_state == '1' else 'Off or Unknown'}")
 
     # Airplane mode
-    airplane = os.popen("settings get global airplane_mode_on").read().strip()
-    print(f"Airplane Mode: {'On' if airplane == '1' else 'Off'}")
+    if command_exists('settings'):
+        airplane = os.popen("settings get global airplane_mode_on").read().strip()
+        print(f"Airplane Mode: {'On' if airplane == '1' else 'Off'}")
+    else:
+        print("Airplane Mode: settings command not available")
 
     # Location
-    location = os.popen("settings get secure location_providers_allowed").read().strip()
-    print(f"Location (GPS): {'Enabled' if location else 'Disabled'}")
+    if command_exists('settings'):
+        location = os.popen("settings get secure location_providers_allowed").read().strip()
+        print(f"Location (GPS): {'Enabled' if location else 'Disabled'}")
+    else:
+        print("Location (GPS): settings command not available")
 
     # Personal Hotspot (Tethering)
-    tethering = os.popen("settings get global tether_dun_required").read().strip()
-    print(f"Personal Hotspot: {'Maybe On' if tethering == '1' else 'Off or Unknown'}")
+    if command_exists('settings'):
+        tethering = os.popen("settings get global tether_dun_required").read().strip()
+        print(f"Personal Hotspot: {'Maybe On' if tethering == '1' else 'Off or Unknown'}")
+    else:
+        print("Personal Hotspot: settings command not available")
 
     print()
 
 def list_installed_apps():
     section_header("Installed Apps")
+    if not command_exists('pm'):
+        print("pm command not found. Cannot list apps.")
+        return
     apps = os.popen("pm list packages").read().strip().split('\n')
     if not apps or apps == ['']:
         print("Could not retrieve app list (may require Termux:API or root).")
