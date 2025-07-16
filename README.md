@@ -27,13 +27,13 @@ A modern, cross-platform (Windows, Linux, Android) CLI tool to display and save 
 
 ## ⚡ Installation
 
-1. **Clone this repository or download `spec.py`:**
+1. **Clone this repository or download the scripts:**
    ```sh
    git clone https://github.com/Pisethz/Specification
-   cd Specification
-   # or just download spec.py and requirements.txt
+   cd yourrepo
+   # or just download spec.py, mobilespec.py, and requirements.txt
    ```
-2. **Install the required Python packages:**
+2. **Install the required Python packages for desktop usage:**
    ```sh
    python -m pip install --upgrade pip
    pip install -r requirements.txt
@@ -50,19 +50,86 @@ A modern, cross-platform (Windows, Linux, Android) CLI tool to display and save 
 
 ## 🛠️ Usage
 
+### Desktop/PC (Windows, Linux)
 Run the script from your terminal:
 ```sh
 python spec.py
 ```
-
 - View your full system specification in the terminal.
 - Choose to save the output to a file if desired.
+
+### 📱 Mobile/Android/Termux
+Run the dedicated Android script:
+```sh
+python mobilespec.py
+```
+- No extra dependencies required (uses only standard Python and getprop)
+- Shows Android device info: brand, model, version, CPU ABI, device, manufacturer, board
+
+#### 📋Example Output (Android)
+```
+                          _____                          
+                   _.+sd$$$$$$$$$bs+._                   
+               .+d$$$$$$$$$$$$$$$$$$$$$b+.               
+            .sd$$$$$$$P^*^T$$$P^*"*^T$$$$$bs.            
+          .s$$$$$$$$P*     `*' _._  `T$$$$$$$s.          
+        .s$$$$$$$$$P          ` :$;   T$$$$$$$$s.        
+       s$$$$$$$$$$;  db..+s.   `**'    T$$$$$$$$$s       
+     .$$$$$$$$$$$$'  `T$P*'             T$$$$$$$$$$.     
+    .$$$$$$$$$$$$P                       T$$$$$$$$$$.    
+   .$$$$$$$$$$$$$b                       `$$$$$$$$$$$.   
+  :$$$$$$$$$$$$$$$.                       T$$$$$$$$$$$;  
+  $$$$$$$$$P^*' :$$b.                     d$$$$$$$$$$$$  
+ :$$$$$$$P'      T$$$$bs._               :P'`*^T$$$$$$$; 
+ $$$$$$$P         `*T$$$$$b              '      `T$$$$$$ 
+:$$$$$$$b            `*T$$$s                      :$$$$$;
+:$$$$$$$$b.                                        $$$$$;
+$$$$$$$$$$$b.                                     :$$$$$$
+$$$$$$$$$$$$$bs.                                 .$$$$$$$
+$$$$$$$$$$$$$$$$$bs.                           .d$$$$$$$$
+:$$$$$$$$$$$$$P*"*T$$bs,._                  .sd$$$$$$$$$;
+:$$$$$$$$$$$$P     TP^**T$bss++.._____..++sd$$$$$$$$$$$$;
+ $$$$$$$$$$$$b           `T$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+ :$$$$$$$$$$$$b.           `*T$$P^*"*"*^^*T$$$$$$$$$$$$; 
+  $$$b       `T$b+                        :$$$$$$$BUG$$  
+  :$P'         `"'               ,._.     ;$$$$$$$$$$$;  
+   \                            `*TP*     d$$P*******$   
+    \                                    :$$P'      /    
+     \                                  :dP'       /     
+      `.                               d$P       .'      
+[bug]   `.                             `'      .'        
+          `-.                               .-'          
+             `-.                         .-'             
+                `*+-._             _.-+*'                
+                      `"*-------*"'
+  ___  _____   _____ _          _   _                    _____    _____                                   _ 
+ |__ \| ____| |  __ (_)        | | | |             /\   |  __ \  |  __ \                                 | |
+    ) | |__   | |__) | ___  ___| |_| |__  ____    /  \  | |__) | | |__) |___  ___  ___ _ ____   _____  __| |
+   / /|___ \  |  ___/ / __|/ _ \ __| '_ \|_  /   / /\ \ |  _  /  |  _  // _ \/ __|/ _ \ '__\ \ / / _ \/ _` |
+  / /_ ___) | | |   | \__ \  __/ |_| | | |/ /   / ____ \| | \ \  | | \ \  __/\__ \  __/ |   \ V /  __/ (_| |
+ |____|____/  |_|   |_|___/\___|\__|_| |_/___| /_/    \_\_|  \_\ |_|  \_\___||___/\___|_|    \_/ \___|\__,_|
+                                        Pisethz x JackyJackyHunt!!
+                                    © 2025 Pisethz. All Rights Reserved
+============================================================
+[ASCII Banner]
+[ Android Device Info ]
+------------------------------
+Brand: samsung
+Model: SM-G991B
+Android Version: 13
+CPU ABI: arm64-v8a
+Device: o1q
+Manufacturer: samsung
+Board: o1q
+
+End of Mobile Specification
+```
 
 ---
 
 ## 📝 Notes
 - Some features may require administrator/root privileges (especially on Linux).
-- Android support is limited to what Python and system commands can access.
+- Android/Termux support is limited to what Python and system commands can access.
 - The script gracefully handles missing or unsupported information.
 
 ---
@@ -203,4 +270,7 @@ Are you want to save this? (y/n):
 ---
 
 ## 📄 License
-MIT License
+MIT License 
+# Specification
+🔥⚙️Computer/Device Full Specification CLI Tool This Python script provides a comprehensive, cross-platform (Windows, Linux, and Android) command-line interface to display and optionally save detailed hardware and system specifications for your computer or device.🛠️🔥
+

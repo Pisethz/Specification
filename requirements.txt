@@ -1,4 +1,4 @@
-# Python packages
+# Python packages (for spec.py)
 psutil
 colorama
 py-cpuinfo
@@ -7,4 +7,6 @@ gputil
 # (Optional) For best WiFi/Bluetooth info on Linux, install:
 # sudo apt install network-manager bluez
 # or
-# sudo dnf install NetworkManager bluez 
+# sudo dnf install NetworkManager bluez
+
+# No extra dependencies required for mobilespec.py (Android/Termux) 
