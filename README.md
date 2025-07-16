@@ -30,7 +30,7 @@ A modern, cross-platform (Windows, Linux, Android) CLI tool to display and save 
 1. **Clone this repository or download `spec.py`:**
    ```sh
    git clone https://github.com/Pisethz/Specification
-   cd yourrepo
+   cd Specification
    # or just download spec.py and requirements.txt
    ```
 2. **Install the required Python packages:**
@@ -203,6 +203,4 @@ Are you want to save this? (y/n):
 ---
 
 ## 📄 License
-MIT License 
-# Specification
-🔥⚙️Computer/Device Full Specification CLI Tool This Python script provides a comprehensive, cross-platform (Windows, Linux, and Android) command-line interface to display and optionally save detailed hardware and system specifications for your computer or device.🛠️🔥
+MIT License
