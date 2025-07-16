@@ -41,7 +41,7 @@ A modern, cross-platform (Windows, Linux, Android) CLI tool to display and save 
 1. **Clone this repository or download the scripts:**
    ```sh
    git clone https://github.com/Pisethz/Specification
-   cd yourrepo
+   cd Specification
    # or just download spec.py, mobilespec.py, and requirements.txt
    ```
 2. **Install the required Python packages for desktop usage:**
