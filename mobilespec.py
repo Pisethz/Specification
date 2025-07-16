@@ -135,6 +135,8 @@ def main():
     clear_screen()
     print_banner()
     get_android_info()
+    get_android_connectivity()
+    list_installed_apps()
     print("=" * 50)
     print("End of Mobile Specification\n")
 

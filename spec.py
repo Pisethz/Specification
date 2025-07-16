@@ -326,18 +326,6 @@ def strip_ansi_codes(text):
     return ansi_escape.sub('', text)
 
 
-def get_android_info():
-    print("[ Android Device Info ]")
-    print("----------------------")
-    print("Brand:", os.popen("getprop ro.product.brand").read().strip())
-    print("Model:", os.popen("getprop ro.product.model").read().strip())
-    print("Android Version:", os.popen("getprop ro.build.version.release").read().strip())
-    print("CPU ABI:", os.popen("getprop ro.product.cpu.abi").read().strip())
-    print("Device:", os.popen("getprop ro.product.device").read().strip())
-    print("Manufacturer:", os.popen("getprop ro.product.manufacturer").read().strip())
-    print("Board:", os.popen("getprop ro.product.board").read().strip())
-    print()
-
 def main():
     clear_screen()
     output_buffer = io.StringIO()
@@ -355,6 +343,7 @@ def main():
     get_wifi_info()
     get_bluetooth_info()
     get_battery_info()
+    get_platform()
     print("=" * 60)
     if colorama_available:
         print(Fore.YELLOW + Style.BRIGHT + "End of Specification" + Style.RESET_ALL)
