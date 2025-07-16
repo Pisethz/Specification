@@ -29,7 +29,7 @@ A modern, cross-platform (Windows, Linux, Android) CLI tool to display and save 
 
 1. **Clone this repository or download `spec.py`:**
    ```sh
-   git clone https://github.com/yourusername/yourrepo.git
+   git clone https://github.com/Pisethz/Specification
    cd yourrepo
    # or just download spec.py and requirements.txt
    ```
