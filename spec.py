@@ -6,6 +6,7 @@ import subprocess
 import sys
 import io
 import re
+import os
 
 try:
     import GPUtil
@@ -323,6 +324,19 @@ def get_motherboard_info():
 def strip_ansi_codes(text):
     ansi_escape = re.compile(r'\x1B\[[0-?]*[ -/]*[@-~]')
     return ansi_escape.sub('', text)
+
+
+def get_android_info():
+    print("[ Android Device Info ]")
+    print("----------------------")
+    print("Brand:", os.popen("getprop ro.product.brand").read().strip())
+    print("Model:", os.popen("getprop ro.product.model").read().strip())
+    print("Android Version:", os.popen("getprop ro.build.version.release").read().strip())
+    print("CPU ABI:", os.popen("getprop ro.product.cpu.abi").read().strip())
+    print("Device:", os.popen("getprop ro.product.device").read().strip())
+    print("Manufacturer:", os.popen("getprop ro.product.manufacturer").read().strip())
+    print("Board:", os.popen("getprop ro.product.board").read().strip())
+    print()
 
 def main():
     clear_screen()
