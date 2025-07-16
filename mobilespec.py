@@ -66,10 +66,69 @@ def get_android_info():
     print(f"Brand: {getprop('ro.product.brand')}")
     print(f"Model: {getprop('ro.product.model')}")
     print(f"Android Version: {getprop('ro.build.version.release')}")
+    print(f"Security Patch: {getprop('ro.build.version.security_patch')}")
+    print(f"Build ID: {getprop('ro.build.display.id')}")
     print(f"CPU ABI: {getprop('ro.product.cpu.abi')}")
+    print(f"Supported ABIs: {getprop('ro.product.cpu.abilist')}")
     print(f"Device: {getprop('ro.product.device')}")
     print(f"Manufacturer: {getprop('ro.product.manufacturer')}")
     print(f"Board: {getprop('ro.product.board')}")
+    print(f"Hardware: {getprop('ro.hardware')}")
+    print(f"Bootloader: {getprop('ro.bootloader')}")
+    print(f"Radio Version: {getprop('gsm.version.baseband')}")
+    print(f"Fingerprint: {getprop('ro.build.fingerprint')}")
+    print(f"Display: {getprop('ro.build.display.id')}")
+    print(f"Product: {getprop('ro.build.product')}")
+    # IMEI is not accessible without root and special permissions, but try anyway
+    imei = getprop('ril.gsm.imei')
+    if imei == 'N/A':
+        imei = getprop('persist.radio.imei')
+    print(f"IMEI: {imei}")
+    print()
+
+def get_android_connectivity():
+    section_header("Connectivity & Services")
+
+    # WiFi status and SSID
+    wifi_state = getprop('wifi.interface')
+    wifi_enabled = getprop('wifi.status')
+    ssid = os.popen("dumpsys wifi | grep 'SSID' | head -1").read().strip()
+    print(f"WiFi Interface: {wifi_state}")
+    print(f"WiFi Status: {wifi_enabled if wifi_enabled != 'N/A' else 'Unknown'}")
+    print(f"WiFi SSID: {ssid if ssid else 'N/A'}")
+
+    # Mobile data
+    mobile_data = getprop('gsm.defaultpdpcontext.active')
+    print(f"Mobile Data: {'On' if mobile_data == 'true' else 'Off or Unknown'}")
+
+    # Bluetooth
+    bt_state = getprop('bluetooth.status')
+    if bt_state == 'N/A':
+        bt_state = os.popen("settings get global bluetooth_on").read().strip()
+    print(f"Bluetooth: {'On' if bt_state == '1' else 'Off or Unknown'}")
+
+    # Airplane mode
+    airplane = os.popen("settings get global airplane_mode_on").read().strip()
+    print(f"Airplane Mode: {'On' if airplane == '1' else 'Off'}")
+
+    # Location
+    location = os.popen("settings get secure location_providers_allowed").read().strip()
+    print(f"Location (GPS): {'Enabled' if location else 'Disabled'}")
+
+    # Personal Hotspot (Tethering)
+    tethering = os.popen("settings get global tether_dun_required").read().strip()
+    print(f"Personal Hotspot: {'Maybe On' if tethering == '1' else 'Off or Unknown'}")
+
+    print()
+
+def list_installed_apps():
+    section_header("Installed Apps")
+    apps = os.popen("pm list packages").read().strip().split('\n')
+    if not apps or apps == ['']:
+        print("Could not retrieve app list (may require Termux:API or root).")
+    else:
+        for app in apps:
+            print(app.replace('package:', ''))
     print()
 
 def main():

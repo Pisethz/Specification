@@ -6,22 +6,33 @@ A modern, cross-platform (Windows, Linux, Android) CLI tool to display and save 
 
 ---
 
-## ✨ Features
+## 🪟🐧 Windows/Linux Features
+- 🎨 Stylish CLI Output: ASCII art banner & colorized sections (with `colorama`)
+- 🧠 CPU Info: Marketing name, internal code, core count, frequency
+- 💾 Memory (RAM): Total & available memory
+- 💽 Disk Info: All partitions, sizes, usage
+- 🖥️ Operating System: Name, version, machine type
+- 🎮 GPU Info: Name, memory, driver (if available)
+- 🌐 Network Info: Hostname, IP address
+- 📶 WiFi Info: Adapter name, MAC, status (platform-dependent)
+- 🟦 Bluetooth Info: Adapter name, MAC, status (platform-dependent)
+- 🔋 Battery Info: Percentage, charging status, time left (if available)
+- 🏷️ System/Brand Info: Manufacturer, model, serial, BIOS version
+- 🧩 Motherboard Info: Vendor, product, serial
+- 💾 Export Option: Save the full output (including ASCII banner) to a `.txt` file, with all color codes stripped for readability
 
-- 🎨 **Stylish CLI Output:** ASCII art banner & colorized sections (with `colorama`)
-- 🧠 **CPU Info:** Marketing name, internal code, core count, frequency
-- 💾 **Memory (RAM):** Total & available memory
-- 💽 **Disk Info:** All partitions, sizes, usage
-- 🖥️ **Operating System:** Name, version, machine type
-- 🎮 **GPU Info:** Name, memory, driver (if available)
-- 🌐 **Network Info:** Hostname, IP address
-- 📶 **WiFi Info:** Adapter name, MAC, status (platform-dependent)
-- 🟦 **Bluetooth Info:** Adapter name, MAC, status (platform-dependent)
-- 🔋 **Battery Info:** Percentage, charging status, time left (if available)
-- 🏷️ **System/Brand Info:** Manufacturer, model, serial, BIOS version
-- 🧩 **Motherboard Info:** Vendor, product, serial
-- 🤖 **Android Support:** Shows what’s possible via `getprop` and system commands
-- 💾 **Export Option:** Save the full output (including ASCII banner) to a `.txt` file, with all color codes stripped for readability
+---
+
+## 🤖 Android Features
+- 🎨 Stylish CLI Output: ASCII art banner
+- 📱 Device Info: Brand, model, Android version, security patch, build ID
+- 🧠 CPU Info: ABI, supported ABIs, hardware
+- 🏷️ Device Identifiers: Device, manufacturer, board, product, fingerprint, IMEI (if accessible)
+- 🔋 Battery Info: (if available via getprop)
+- 📶 Connectivity: WiFi, mobile data, Bluetooth, Airplane mode, location, hotspot status (where possible)
+- 📦 Installed Apps: List all installed app package names
+- 💾 Export Option: (add if implemented)
+- ⚠️ Note: Some info may require root or special permissions; not all fields are available on all devices
 
 ---
 
@@ -64,7 +75,7 @@ Run the dedicated Android script:
 python mobilespec.py
 ```
 - No extra dependencies required (uses only standard Python and getprop)
-- Shows Android device info: brand, model, version, CPU ABI, device, manufacturer, board
+- Shows Android device info: brand, model, version, CPU ABI, device, manufacturer, board, and more
 
 #### 📋Example Output (Android)
 ```
@@ -117,10 +128,20 @@ $$$$$$$$$$$$$$$$$bs.                           .d$$$$$$$$
 Brand: samsung
 Model: SM-G991B
 Android Version: 13
+Security Patch: 2023-07-01
+Build ID: TP1A.220624.014
 CPU ABI: arm64-v8a
+Supported ABIs: arm64-v8a,armeabi-v7a,armeabi
 Device: o1q
 Manufacturer: samsung
 Board: o1q
+Hardware: qcom
+Bootloader: G991BXXU4BULF
+Radio Version: G991BXXU4BULF
+Fingerprint: samsung/o1q/o1q:13/TP1A.220624.014/G991BXXU4BULF:user/release-keys
+Display: TP1A.220624.014
+Product: o1q
+IMEI: 123456789012345
 
 End of Mobile Specification
 ```
@@ -270,7 +291,8 @@ Are you want to save this? (y/n):
 ---
 
 ## 📄 License
-MIT License 
+MIT License
+
 # Specification
 🔥⚙️Computer/Device Full Specification CLI Tool This Python script provides a comprehensive, cross-platform (Windows, Linux, and Android) command-line interface to display and optionally save detailed hardware and system specifications for your computer or device.🛠️🔥
 
