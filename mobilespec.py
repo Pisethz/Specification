@@ -141,12 +141,13 @@ def list_installed_apps():
     if not command_exists('pm'):
         print("pm command not found. Cannot list apps.")
         return
-    apps = os.popen("pm list packages").read().strip().split('\n')
-    if not apps or apps == ['']:
-        print("Could not retrieve app list (may require Termux:API or root).")
-    else:
-        for app in apps:
-            print(app.replace('package:', ''))
+    output = os.popen("pm list packages").read().strip()
+    if "failure calling service" in output or not output:
+        print("Could not retrieve app list (Android is blocking access for Termux; may require root or special permissions).")
+        return
+    apps = output.split('\n')
+    for app in apps:
+        print(app.replace('package:', ''))
     print()
 
 def main():
