@@ -1,0 +1,10 @@
+# Python packages
+psutil
+colorama
+py-cpuinfo
+gputil
+
+# (Optional) For best WiFi/Bluetooth info on Linux, install:
+# sudo apt install network-manager bluez
+# or
+# sudo dnf install NetworkManager bluez 
